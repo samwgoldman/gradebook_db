@@ -1,0 +1,1 @@
+run gradebook.sql, then generate_data.sql, then constraints.sql
