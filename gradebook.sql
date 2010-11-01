@@ -1,34 +1,7 @@
 -- CLEANUP
 
-DROP VIEW IF EXISTS user_percent_score;
-DROP VIEW IF EXISTS user_score;
-DROP VIEW IF EXISTS assignment_average_percent_score;
-DROP VIEW IF EXISTS assignment_average_score;
-DROP VIEW IF EXISTS assignment_percent_score;
-DROP VIEW IF EXISTS assignment_score;
-DROP VIEW IF EXISTS class_points;
-DROP VIEW IF EXISTS quiz_points;
-DROP VIEW IF EXISTS score;
-DROP VIEW IF EXISTS score_multiple_answer;
-DROP VIEW IF EXISTS score_multiple_choice;
-DROP VIEW IF EXISTS score_true_false;
-DROP TABLE IF EXISTS answer_multiple_answer;
-DROP TABLE IF EXISTS answer_multiple_choice;
-DROP TABLE IF EXISTS answer_true_false;
-DROP TABLE IF EXISTS answer;
-DROP TABLE IF EXISTS assignment;
-DROP TABLE IF EXISTS solution_multiple_answer;
-DROP TABLE IF EXISTS solution_multiple_choice;
-DROP TABLE IF EXISTS solution_true_false;
-DROP TABLE IF EXISTS question_multiple_answer;
-DROP TABLE IF EXISTS question_multiple_choice;
-DROP TABLE IF EXISTS "option";
-DROP TABLE IF EXISTS question;
-DROP TYPE IF EXISTS question_type;
-DROP TABLE IF EXISTS quiz;
-DROP TABLE IF EXISTS class_user;
-DROP TABLE IF EXISTS class;
-DROP TABLE IF EXISTS "user";
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
 
 -- USER
 
