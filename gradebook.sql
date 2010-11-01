@@ -168,29 +168,29 @@ CREATE VIEW score_multiple_choice AS
   NATURAL JOIN answer_multiple_choice answer;
 
 CREATE VIEW score_multiple_answer AS
-	SELECT
-	  class_id, user_id, quiz_id, number,
-	  CASE
-	    WHEN answer.option_sum = solution.option_sum THEN points
-	    ELSE 0
-	  END as score
-	FROM (
-	  SELECT class_id, user_id, quiz_id, number, SUM(answer.option_id) option_sum
-	  FROM answer_multiple_answer answer
-	  GROUP BY class_id, user_id, quiz_id, number
-	) AS answer
-	INNER JOIN (
-	  SELECT quiz_id, number, points, SUM(solution.option_id) option_sum
-	  FROM question
-	  NATURAL JOIN solution_multiple_answer solution
-	  GROUP BY quiz_id, number, points
-	) AS solution USING (quiz_id, number);
+  SELECT
+    class_id, user_id, quiz_id, number,
+    CASE
+      WHEN answer.option_sum = solution.option_sum THEN points
+      ELSE 0
+    END as score
+  FROM (
+    SELECT class_id, user_id, quiz_id, number, SUM(answer.option_id) option_sum
+    FROM answer_multiple_answer answer
+    GROUP BY class_id, user_id, quiz_id, number
+  ) AS answer
+  INNER JOIN (
+    SELECT quiz_id, number, points, SUM(solution.option_id) option_sum
+    FROM question
+    NATURAL JOIN solution_multiple_answer solution
+    GROUP BY quiz_id, number, points
+  ) AS solution USING (quiz_id, number);
 
 CREATE VIEW score AS
   SELECT * FROM score_true_false
-	UNION
+  UNION
   SELECT * FROM score_multiple_choice
-	UNION
+  UNION
   SELECT * FROM score_multiple_answer;
 
 CREATE VIEW quiz_points AS
